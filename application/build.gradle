@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "6.5.1"
+}
+
+group 'com.devdelivery'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(":domain"))
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.8.0'
+
+    implementation 'javax.inject:javax.inject:1'
+
+    implementation 'io.vavr:vavr:0.10.4'
+}
+
+test {
+    useJUnitPlatform()
+}

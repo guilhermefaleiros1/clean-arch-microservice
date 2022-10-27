@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'com.devdelivery'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':application')
+    implementation project(':infrastructure')
+    implementation project(':api')
+}
+
+test {
+    useJUnitPlatform()
+}

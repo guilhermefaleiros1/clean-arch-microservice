@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "io.freefair.lombok" version "6.5.1"
+}
+
+group 'com.devdelivery.orders.api'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':application')
+    implementation project(':domain')
+    implementation project(':infrastructure')
+
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+    implementation('org.springframework.boot:spring-boot-starter-undertow')
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.4'
+
+    implementation 'io.vavr:vavr:0.10.4'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+bootRun {
+    args = ["--spring.profiles.active=dev"]
+}
+
+bootJar {
+    archiveName 'api.jar'
+}
+
+test {
+    useJUnitPlatform()
+}
